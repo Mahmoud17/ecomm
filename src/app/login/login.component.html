@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+  <h3 class="my-4">Register Now</h3>
+
+  <div class="alert alert-danger my-4" *ngIf="apiError">
+    <p class="m-0">{{apiError}}</p>
+  </div>
+
+  <label for="">Email</label>
+  <input type="email" name="email" id="email" formControlName="email" class="form-control">
+  <div class="alert alert-danger my-3" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+    <p class="m-0" *ngIf='loginForm.get("email")?.getError("email")'>Please Enter a valid email</p>
+    <p class="m-0" *ngIf='loginForm.get("email")?.getError("required")'>Email is required</p>
+  </div>
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" formControlName="password" class="form-control">
+  <div class="alert alert-danger my-3" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+    <p class="m-0" *ngIf='loginForm.get("password")?.getError("minlength")'>Passwrod min length is 8</p>
+    <p class="m-0" *ngIf='loginForm.get("password")?.getError("required")'>Password is required</p>
+  </div>
+
+  <button class="btn btn-success d-block ms-auto mt-3" type="submit" [disabled]="loginForm.invalid">
+    <i class="fas fa-spinner fa-spin" *ngIf="loading"></i>
+    <span *ngIf="!loading">Log In</span>
+  </button>
+
+</form>
