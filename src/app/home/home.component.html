@@ -17,9 +17,7 @@
   </div>
 </div>
 
-<div class="row" *ngIf="categories.length > 0 else x">
-
-</div>
+<app-category-slider></app-category-slider>
 
 <div class="row" *ngIf="items.length > 0 else x">
   <div class="col-md-2 my-3" *ngFor="let item of items">

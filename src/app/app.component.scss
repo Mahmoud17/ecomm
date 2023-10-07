@@ -2,3 +2,15 @@ a {
   all:unset;
   cursor: pointer;
 }
+
+
+.container {min-height: 90vh;}
+
+
+footer {
+  background-color: #eee;
+  padding: 2rem 4rem;
+  p {
+    margin:0
+  }
+}
