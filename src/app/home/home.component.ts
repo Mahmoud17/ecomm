@@ -4,6 +4,7 @@ import { ProductsService } from '../products.service';
 import { Product } from 'interfaces/product';
 import { Category } from 'interfaces/category';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +13,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class HomeComponent {
   items: Product[] = []
   categories: Category[] = []
-  constructor(private _ProductsService: ProductsService) {}
+  constructor(private _ProductsService: ProductsService, private _cart: CartService) {}
 
   ngOnInit():void {
     this._ProductsService.getProducts().subscribe(res => {
@@ -23,6 +24,17 @@ export class HomeComponent {
     this._ProductsService.getCategories().subscribe(res => {
       console.log(res)
       this.categories = res.data
+    })
+  }
+
+  addToCart(productId:string) {
+    this._cart.addToCart(productId).subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
     })
   }
 

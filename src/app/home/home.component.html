@@ -28,9 +28,11 @@
         <h5>{{item.title.split(' ').slice(0,2).join(' ')}}...</h5>
         <p class="text-muted">{{item.price}} EGP</p>
         <p class="text-muted"><i class="fa-solid fa-star gold"></i> {{item.ratingsAverage}}</p>
-        <button class="btn btn-success text-white">+ Add</button>
+
       </div>
+
     </a>
+    <button class="btn btn-success text-white" (click)="addToCart(item._id)">+ Add</button>
   </div>
 </div>
 
