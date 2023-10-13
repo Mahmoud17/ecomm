@@ -1,0 +1,18 @@
+<form (submit)="handleSubmit(shippingForm)" [formGroup]="shippingForm">
+  <label for="details">Enter your detailed address:</label>
+  <input
+    type="text"
+    class="form-control"
+    id="details"
+    formControlName="details"
+  />
+
+  <label for="phone">Enter your phone number:</label>
+  <input type="tel" class="form-control" id="phone" formControlName="phone" />
+
+  <label for="city">Enter your detailed address:</label>
+  <input type="text" class="form-control" id="city" formControlName="city" />
+
+  <button class="btn btn-success my-4" type="submit">Pay Online</button>
+  <button class="btn btn-success my-4 mx-4" type="submit">Pay Cash</button>
+</form>

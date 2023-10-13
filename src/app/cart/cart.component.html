@@ -1,26 +1,42 @@
 <div>
   <h2>Shopping Cart</h2>
-  <h5 class="text-success">Price Total: {{data?.totalCartPrice}}</h5>
+  <h5 class="text-success">Price Total: {{ data?.totalCartPrice }}</h5>
 
   <div class="row my-3" *ngFor="let item of data.products">
     <div class="col-md-1">
       <div>
-        <img [src]="item.product.imageCover" alt="" class="w-100">
+        <img [src]="item.product.imageCover" alt="" class="w-100" />
       </div>
     </div>
     <div class="col-md-11">
       <div class="d-flex justify-content-between">
         <div>
-          <h4>{{item.product.title}}</h4>
-          <h6>{{item.price | currency:"EGP"}}</h6>
+          <h4>{{ item.product.title }}</h4>
+          <h6>{{ item.price | currency : "EGP" }}</h6>
         </div>
         <div>
-          <button class="btn add" (click)="updateProduct(item.product._id, item.count + 1)"> + </button>
-          <span class="d-inline-block mx-3">{{item.count}}</span>
-          <button class="btn remove" (click)="updateProduct(item.product._id, item.count - 1)"> - </button>
+          <button
+            class="btn add"
+            (click)="updateProduct(item.product._id, item.count + 1)"
+          >
+            +
+          </button>
+          <span class="d-inline-block mx-3">{{ item.count }}</span>
+          <button
+            class="btn remove"
+            (click)="updateProduct(item.product._id, item.count - 1)"
+          >
+            -
+          </button>
         </div>
       </div>
-      <button class="btn my-0" (click)="removeProduct(item.product._id)"><i class="fa fa-trash text-danger"></i> Remove</button>
+      <button class="btn my-0" (click)="removeProduct(item.product._id)">
+        <i class="fa fa-trash text-danger"></i> Remove
+      </button>
     </div>
   </div>
+
+  <button class="btn btn-success mt-3 mb-5" routerLink="/shippingdetails">
+    Checkout
+  </button>
 </div>

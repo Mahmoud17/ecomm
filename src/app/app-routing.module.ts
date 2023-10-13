@@ -10,22 +10,36 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "home", pathMatch: "full"},
-  {path: "home", canActivate: [authGuard], component: HomeComponent},
-  {path: "products", canActivate: [authGuard], component: ProductsComponent},
-  {path: "cart", canActivate: [authGuard], component: CartComponent},
-  {path: "categories", canActivate: [authGuard], component: CategoriesComponent},
-  {path: "brands", canActivate: [authGuard], component: BrandsComponent},
-  {path: "productdetails/:id", canActivate: [authGuard], component: ProductdetailsComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "login", component: LoginComponent},
-  {path: "**", component: NotfoundComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', canActivate: [authGuard], component: HomeComponent },
+  { path: 'products', canActivate: [authGuard], component: ProductsComponent },
+  { path: 'cart', canActivate: [authGuard], component: CartComponent },
+  {
+    path: 'categories',
+    canActivate: [authGuard],
+    component: CategoriesComponent,
+  },
+  { path: 'brands', canActivate: [authGuard], component: BrandsComponent },
+  {
+    path: 'productdetails/:id',
+    canActivate: [authGuard],
+    component: ProductdetailsComponent,
+  },
+  {
+    path: 'shippingdetails',
+    canActivate: [authGuard],
+    component: ShippingDetailsComponent,
+  },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

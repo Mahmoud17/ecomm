@@ -8,34 +8,39 @@ import { CartService } from '../cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  items: Product[] = []
-  categories: Category[] = []
-  constructor(private _ProductsService: ProductsService, private _cart: CartService) {}
+  items: Product[] = [];
+  categories: Category[] = [];
+  constructor(
+    private _ProductsService: ProductsService,
+    private _cart: CartService
+  ) {}
 
-  ngOnInit():void {
-    this._ProductsService.getProducts().subscribe(res => {
-      console.log(res)
-      this.items = res.data
-    })
+  ngOnInit(): void {
+    this._ProductsService.getProducts().subscribe((res) => {
+      console.log(res);
+      this.items = res.data;
+    });
 
-    this._ProductsService.getCategories().subscribe(res => {
-      console.log(res)
-      this.categories = res.data
-    })
+    this._ProductsService.getCategories().subscribe((res) => {
+      console.log(res);
+      this.categories = res.data;
+    });
   }
 
-  addToCart(productId:string) {
+  addToCart(productId: string) {
     this._cart.addToCart(productId).subscribe({
       next: (res) => {
-        console.log(res)
+        console.log(res);
+        this._cart.numOfItems.next(res.numOfCartItems);
+        console.log(this._cart.numOfItems.getValue());
       },
       error: (err) => {
-        console.log(err)
-      }
-    })
+        console.log(err);
+      },
+    });
   }
 
   customOptions: OwlOptions = {
@@ -48,10 +53,9 @@ export class HomeComponent {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 1
-      }
+        items: 1,
+      },
     },
-    nav: true
-  }
-
+    nav: true,
+  };
 }
