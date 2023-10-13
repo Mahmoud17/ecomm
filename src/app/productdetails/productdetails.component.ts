@@ -34,6 +34,7 @@ export class ProductdetailsComponent implements OnInit {
     this._cart.addToCart(productId).subscribe({
       next: (res) => {
         console.log(res);
+        this._cart.numOfItems.next(res.numOfCartItems);
       },
       error: (err) => {
         console.log(err);

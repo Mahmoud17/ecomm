@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +30,11 @@ const routes: Routes = [
     component: ProductdetailsComponent,
   },
   {
+    path: 'categorydetails/:id',
+    canActivate: [authGuard],
+    component: CategoryDetailsComponent,
+  },
+  {
     path: 'shippingdetails',
     canActivate: [authGuard],
     component: ShippingDetailsComponent,
@@ -39,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

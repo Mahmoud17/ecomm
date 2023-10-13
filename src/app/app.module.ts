@@ -19,6 +19,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CategorySliderComponent } from './category-slider/category-slider.component';
 import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { ShippingDetailsComponent } from './shipping-details/shipping-details.co
     NavbarComponent,
     ProductdetailsComponent,
     CategorySliderComponent,
-    ShippingDetailsComponent
+    ShippingDetailsComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     BrowserModule,
